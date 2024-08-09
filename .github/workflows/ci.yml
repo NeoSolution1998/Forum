@@ -46,7 +46,7 @@ jobs:
       - name: Create environment file  # Создание файла .env на основе .env.example
         run: cp .env.example .env  # Копируем .env.example в .env
 
-      - name: Update environment variables for testing  # Настройка переменных окружения для тестов
+      - name: Update environment variables for testing  # Настройка переменных окружения для тестов 
         run: |
           php -r "file_put_contents('.env', PHP_EOL.'DB_CONNECTION=mysql'.PHP_EOL, FILE_APPEND);"  
           php -r "file_put_contents('.env', 'DB_HOST=127.0.0.1'.PHP_EOL, FILE_APPEND);" 

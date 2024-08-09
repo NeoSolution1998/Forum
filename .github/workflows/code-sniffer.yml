@@ -1,0 +1,37 @@
+name: Code Sniffer
+
+on: 
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  code-sniffer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHP_CodeSniffer
+        run: vendor/bin/phpcs --standard=phpcs.xml --ignore-warnings
+
+      - name: Upload PHP_CodeSniffer results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpcs-results
+          path: phpcs-report.xml

@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\V1\Auth\PasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/user', function (Request $request) {
     return $request->user();
 });
@@ -23,5 +22,6 @@ Route::post('password/reset', [PasswordController::class, 'resetPassword']);
 Route::put('password', [PasswordController::class, 'updatePassword'])->middleware('auth:sanctum');
 
 // Email Verification routes
-Route::post('email/verification-link', [EmailVerificationController::class, 'sendVerificationLink'])->middleware('auth:sanctum');
+Route::post('email/verification-link', [EmailVerificationController::class, 'sendVerificationLink'])
+    ->middleware('auth:sanctum');
 Route::post('email/verify', [EmailVerificationController::class, 'verifyEmail'])->middleware('auth:sanctum');

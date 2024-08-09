@@ -1,6 +1,6 @@
 [![CI Pipeline](https://github.com/NeoSolution1998/Forum/actions/workflows/ci.yml/badge.svg)](https://github.com/NeoSolution1998/Forum/actions/workflows/ci.yml)
 
-[![codecov](https://codecov.io/github/NeoSolution1998/todolist/graph/badge.svg?token=0EI0I9152O)](https://codecov.io/github/NeoSolution1998/todolist)
+[![codecov](https://codecov.io/gh/NeoSolution1998/Forum/branch/main/graph/badge.svg?token=WUV2T8GEKN)](https://codecov.io/gh/NeoSolution1998/Forum)
 
 **Международный форум** — это многоязычная платформа для обсуждений, которая предназначена для пользователей из США, Саудовской Аравии и Таиланда. Наша цель — создать удобную и интуитивно понятную платформу для обсуждений и обмена мнениями по широкому спектру тем.
 

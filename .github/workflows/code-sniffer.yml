@@ -27,7 +27,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Run PHP_CodeSniffer
-        run: vendor/bin/phpcs --standard=phpcs.xml --ignore-warnings
+        run: vendor/bin/phpcs --standard=phpcs.xml
 
       - name: Upload PHP_CodeSniffer results
         if: always()

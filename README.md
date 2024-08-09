@@ -1,9 +1,12 @@
 <p align="center">
   <a href="https://github.com/NeoSolution1998/Forum/actions/workflows/ci.yml">
-    <img src="https://github.com/NeoSolution1998/Forum/actions/workflows/ci.yml/badge.svg" alt="CI Pipeline" />
+    <img src="https://github.com/NeoSolution1998/Forum/actions/workflows/ci.yml/badge.svg" alt="CI Pipeline"/>
   </a>
   <a href="https://codecov.io/gh/NeoSolution1998/Forum">
-    <img src="https://codecov.io/gh/NeoSolution1998/Forum/branch/main/graph/badge.svg?token=WUV2T8GEKN" alt="codecov" />
+    <img src="https://codecov.io/gh/NeoSolution1998/Forum/branch/main/graph/badge.svg?token=WUV2T8GEKN" alt="Codecov"/>
+  </a>
+  <a href="https://github.com/NeoSolution1998/Forum/actions/workflows/code-sniffer.yml">
+    <img src="https://github.com/NeoSolution1998/Forum/actions/workflows/code-sniffer.yml/badge.svg" alt="Code Sniffer"/>
   </a>
 </p>
 

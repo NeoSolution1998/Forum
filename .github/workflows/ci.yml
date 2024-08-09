@@ -21,10 +21,10 @@ jobs:
           MYSQL_ROOT_PASSWORD: root  # Пароль для пользователя root
           MYSQL_DATABASE: testing_db  # Название базы данных для тестов
         options: >-  # Дополнительные опции для контейнера MySQL
-          --health-cmd="mysqladmin ping"  # Команда для проверки здоровья сервиса
-          --health-interval=10s  # Интервал проверки здоровья
-          --health-timeout=5s  # Таймаут для проверки здоровья
-          --health-retries=3  # Количество попыток перед признанием сервиса нездоровым
+          --health-cmd="mysqladmin ping"  
+          --health-interval=10s  
+          --health-timeout=5s  
+          --health-retries=3  
         ports:
           - 3306:3306  # Пробрасываем порт 3306
         volumes:
@@ -48,12 +48,12 @@ jobs:
 
       - name: Update environment variables for testing  # Настройка переменных окружения для тестов
         run: |
-          php -r "file_put_contents('.env', PHP_EOL.'DB_CONNECTION=mysql'.PHP_EOL, FILE_APPEND);"  # Настраиваем подключение к базе данных
-          php -r "file_put_contents('.env', 'DB_HOST=127.0.0.1'.PHP_EOL, FILE_APPEND);"  # Устанавливаем хост базы данных
-          php -r "file_put_contents('.env', 'DB_PORT=3306'.PHP_EOL, FILE_APPEND);"  # Устанавливаем порт базы данных
-          php -r "file_put_contents('.env', 'DB_DATABASE=testing_db'.PHP_EOL, FILE_APPEND);"  # Устанавливаем имя базы данных
-          php -r "file_put_contents('.env', 'DB_USERNAME=root'.PHP_EOL, FILE_APPEND);"  # Устанавливаем имя пользователя базы данных
-          php -r "file_put_contents('.env', 'DB_PASSWORD=root'.PHP_EOL, FILE_APPEND);"  # Устанавливаем пароль базы данных
+          php -r "file_put_contents('.env', PHP_EOL.'DB_CONNECTION=mysql'.PHP_EOL, FILE_APPEND);"  
+          php -r "file_put_contents('.env', 'DB_HOST=127.0.0.1'.PHP_EOL, FILE_APPEND);" 
+          php -r "file_put_contents('.env', 'DB_PORT=3306'.PHP_EOL, FILE_APPEND);" 
+          php -r "file_put_contents('.env', 'DB_DATABASE=testing_db'.PHP_EOL, FILE_APPEND);"  
+          php -r "file_put_contents('.env', 'DB_USERNAME=root'.PHP_EOL, FILE_APPEND);"  
+          php -r "file_put_contents('.env', 'DB_PASSWORD=root'.PHP_EOL, FILE_APPEND);"  
 
       - name: Generate app key  # Генерация ключа приложения Laravel
         run: php artisan key:generate  # Генерируем ключ для шифрования

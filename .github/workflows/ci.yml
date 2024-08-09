@@ -21,7 +21,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: root  # Пароль для пользователя root
           MYSQL_DATABASE: testing_db  # Название базы данных для тестов
         options: >-  # Дополнительные опции для контейнера MySQL
-          --health-cmd="mysqladmin ping"  
+          --health-cmd="mysqladmin ping --silent"  
           --health-interval=10s  
           --health-timeout=5s  
           --health-retries=3  
@@ -61,8 +61,15 @@ jobs:
       - name: Run migrations  # Запуск миграций для настройки базы данных
         run: php artisan migrate --force  # Применяем миграции с параметром --force для обхода запросов на подтверждение
 
-      - name: Run tests  # Запуск тестов
-        run: php artisan test  # Запускаем тесты с помощью artisan команды
+      - name: Run tests  # Запуск тестов с генерацией отчета о покрытии кода
+        run: php artisan test --coverage-clover=coverage.xml  # Запускаем тесты с генерацией покрытия в файл coverage.xml
+
+      - name: Upload coverage reports to Codecov  # Загрузка отчета покрытия кода в Codecov
+        uses: codecov/codecov-action@v4.0.1  # Используем action для загрузки отчетов в Codecov
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}  # Используем секретный токен для доступа к Codecov
+          files: ./coverage.xml  # Путь к файлу с отчетом о покрытии кода
+          fail_ci_if_error: true  # Если возникнет ошибка при загрузке, завершить с ошибкой
 
       - name: Upload test results  # Загрузка результатов тестов как артефакта
         if: always()  # Всегда выполняем этот шаг, даже если предыдущие шаги завершились с ошибкой

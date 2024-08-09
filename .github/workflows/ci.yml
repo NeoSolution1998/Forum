@@ -55,7 +55,7 @@ jobs:
           php -r "file_put_contents('.env', 'DB_USERNAME=root'.PHP_EOL, FILE_APPEND);"  
           php -r "file_put_contents('.env', 'DB_PASSWORD=root'.PHP_EOL, FILE_APPEND);"  
 
-      - name: Generate app key  # Генерация ключа приложения Laravel
+      - name: Generate app key  # Генерация ключа приложения Laravel 
         run: php artisan key:generate  # Генерируем ключ для шифрования
 
       - name: Run migrations  # Запуск миграций для настройки базы данных
